@@ -13,3 +13,9 @@ kubectl create -f mn-sys-stat-manual.yaml
 kubectl get pods --show-labels
 kubectl get pods -L <<label names seperated by commas>>
 kubectl get pods -l creation_method=manual,run=mn-sys-stat
+
+kubectl create -f custom-namespace.yaml
+kubectl create namespace custom-namespace
+
+kubectl port-forward mn-sys-stat-manual 8888:8080 -n custom-namespace
+docker tag mn-sys-stat anywhereinfo/mn-sys-stat
